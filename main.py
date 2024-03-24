@@ -5,6 +5,9 @@ import tkinter as tk
 
 
 
+#-------------------------------------------------------------------------
+
+
 #METODO DE JACOBI PARA RESOLVER SISTEMAS DE ECUACIONES LINEALES
 def jacobi (A,b, vectorSolucion,iteracciones):
   iteraccion = 0
@@ -23,6 +26,9 @@ def jacobi (A,b, vectorSolucion,iteracciones):
             vectorSolucion[p]= vectorAux[p]
    print('X da etapa: ', iteraccion, ' Aproximacion: ', vectorSolucion)
 
+#-------------------------------------------------------------------------
+
+
 #METODO DE EULER PARA RESOLVER ECUACIONES DIFERENCIALES ORDINARIAS
 def euler(funcion,t0,y0,h,n):
   t=t0
@@ -36,6 +42,10 @@ def euler(funcion,t0,y0,h,n):
 def funcion_euler(t, y):
   return y
 
+
+#-------------------------------------------------------------------------
+
+
 #ALGORITMO DE LA REGLA DE SIMPSON COMPUESTA
 def simpson_compuesta(funcion, a, b, n):
   h = (b - a) / n
@@ -46,6 +56,9 @@ def simpson_compuesta(funcion, a, b, n):
     else:
       suma += 4 * funcion(a + i * h)
       return(h/3) * suma
+
+
+#-------------------------------------------------------------------------
       
 # Función para llamar al método de Jacobi cuando se hace clic en el botón
 def llamar_jacobi():
@@ -65,10 +78,14 @@ def llamar_simpson_compuesta():
     resultado = simpson_compuesta(funcion, a, b, n)
     print("Resultado de la regla de Simpson compuesta:", resultado)
 
+#-------------------------------------------------------------------------
+
 #CREAMOS LA VENTANA PRINCIPAL
 root = tk.Tk()
 root.title("EJECUTAR LOS PROGRAMAS DE METODOS NUMERICOS SIS ")
 root.geometry("400x400")
+
+#-------------------------------------------------------------------------
 
 #CREAMOS UN LABEL PARA MOSTRAR EL TITULO DE LA VENTANA PRINCIPAL
 titulo = tk.Label (root,text="¿QUE PROGRAMA DESEAS EJECUTAR?")
