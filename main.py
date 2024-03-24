@@ -60,6 +60,12 @@ def llamar_simpson_compuesta():
     resultado = simpson_compuesta(funcion, a, b, n)
     print("Resultado de la regla de Simpson compuesta:", resultado)
 
+#CREAMOS LA VENTANA PRINCIPAL
+root = tk.Tk()
+root.title("EJECUTAR LOS PROGRAMAS DE METODOS NUMERICOS SIS ")
+root.geometry("400x400")
+
+
 
 
 
