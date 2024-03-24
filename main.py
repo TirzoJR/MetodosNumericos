@@ -31,3 +31,16 @@ def euler(funcion,t0,y0,h,n):
 def funcion_euler(t, y):
   return y
 
+#ALGORITMO DE LA REGLA DE SIMPSON COMPUESTA
+def simpson_compuesta(funcion, a, b, n):
+  h = (b - a) / n
+  suma = funcion(a) + funcion(b)
+  for i in range (1 , n):
+    if i % 2 == 0:
+      suma += 2 * funcion(a + i * h)
+    else:
+      suma += 4 * funcion(a + i * h)
+      return(h/3) * suma
+
+
+
