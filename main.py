@@ -51,4 +51,17 @@ def llamar_jacobi():
 def llamar_euler():
     euler(funcion_euler, 0, 1, 0.1, 10)
 
+#FUNCION PARA LLAMAR AL ALGORITMO DE LA REGLA DE SIMPSON COMPUESTA CUANDO SE HACE CLIC EN EL BOTON
+def llamar_simpson_compuesta():
+    funcion = lambda x: x**2  # Ejemplo de función f(x) = x^2
+    a = 0
+    b = 1
+    n = 10  # Número de subintervalos
+    resultado = simpson_compuesta(funcion, a, b, n)
+    print("Resultado de la regla de Simpson compuesta:", resultado)
+
+
+
+
+
 
