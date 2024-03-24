@@ -65,8 +65,9 @@ root = tk.Tk()
 root.title("EJECUTAR LOS PROGRAMAS DE METODOS NUMERICOS SIS ")
 root.geometry("400x400")
 
-
-
+#CREAMOS UN LABEL PARA MOSTRAR EL TITULO DE LA VENTANA PRINCIPAL
+titulo = tk.Label (root,text="¿QUE PROGRAMA DESEAS EJECUTAR?")
+titulo.pack(pady=10)
 
 
 
