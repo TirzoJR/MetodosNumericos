@@ -1,5 +1,10 @@
 import tkinter as tk
 
+#METODO DE INTERPOLACION DE HERMITE
+#FALTA AQUI ------------------------------
+
+
+
 #METODO DE JACOBI PARA RESOLVER SISTEMAS DE ECUACIONES LINEALES
 def jacobi (A,b, vectorSolucion,iteracciones):
   iteraccion = 0
@@ -68,6 +73,24 @@ root.geometry("400x400")
 #CREAMOS UN LABEL PARA MOSTRAR EL TITULO DE LA VENTANA PRINCIPAL
 titulo = tk.Label (root,text="¿QUE PROGRAMA DESEAS EJECUTAR?")
 titulo.pack(pady=10)
+
+#VAMOS A CREAR LOS BOTONES PARA LOS METODOS DE JACOBI,EULER,SIMPSON COMPUESTA, INTERPOLACION DE HERMITE
+boton_jacobi = tk.Button(root,text="RESOLVER CON JACOBI", command=llamar_jacobi)
+boton_jacobi.pack(pady=5)
+
+boton_euler = tk.Button(root,text="RESOLVER CON EULER", command=llamar_euler)
+boton_euler.pack(pady=5)
+
+boton_simpson_compuesta = tk.Button(root,text="RESOLVER CON JACOBI", command=llamar_simpson_compuesta)
+boton_simpson_compuesta.pack(pady=5)
+
+"EJECUTAR EL BUCLE DE CADA UNO DE LOS EVENTOS
+root.mainloop()
+
+
+
+
+
 
 
 
