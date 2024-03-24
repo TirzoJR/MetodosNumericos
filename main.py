@@ -41,6 +41,14 @@ def simpson_compuesta(funcion, a, b, n):
     else:
       suma += 4 * funcion(a + i * h)
       return(h/3) * suma
+      
+# Función para llamar al método de Jacobi cuando se hace clic en el botón
+def llamar_jacobi():
+    jacobi([[2, 1], [3, 4]], [1, -1], [0, 0], 3)
+    jacobi([[10, 2, 1], [1, 5, 1], [2, 3, 10]], [7, -8, 6], [0, 0, 0], 38)
 
+# Función para llamar al método de Euler cuando se hace clic en el botón
+def llamar_euler():
+    euler(funcion_euler, 0, 1, 0.1, 10)
 
 
