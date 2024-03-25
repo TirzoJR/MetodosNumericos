@@ -1,9 +1,32 @@
 import tkinter as tk
-
-#METODO DE INTERPOLACION DE HERMITE
-#FALTA AQUI ------------------------------
-
-
+import numpy as np
+import matplotlib.pyplot as plt
+#-------------------------------------------------------------------------
+def hermite_interpolation(x, y, y_prime, x_interp):
+    n = len(x)
+    m = 2 * n
+    
+    # Initialize arrays for divided differences
+    f = np.zeros((m, m))
+    f[:, 0] = np.concatenate((x, x))
+    f[:, 1] = np.concatenate((y, y))
+    
+    # Compute divided differences
+    for j in range(2, m):
+        for i in range(m - j):
+            f[i, j] = (f[i + 1, j - 1] - f[i, j - 1]) / (f[i + j, 0] - f[i, 0])
+    
+    # Interpolation
+    y_interp = np.zeros_like(x_interp)
+    for i, x_i in enumerate(x_interp):
+        prod = 1
+        term = f[0, 1]
+        for j in range(2, m):
+            prod *= (x_i - f[j - 2, 0])
+            term += f[0, j] * prod
+        y_interp[i] = term
+    
+    return y_interp
 
 #-------------------------------------------------------------------------
 
@@ -59,7 +82,26 @@ def simpson_compuesta(funcion, a, b, n):
 
 
 #-------------------------------------------------------------------------
-      
+
+#HERMITE INTERPOLACION
+def llamar_hermite_interpolation():
+    x = np.array([0, 1, 2])
+    y = np.array([1, 2, 3])
+    y_prime = np.array([2, 3, 4])
+
+    x_interp = np.linspace(0, 2, 100)
+    y_interp = hermite_interpolation(x, y, y_prime, x_interp)
+
+    plt.plot(x, y, 'ro', label='Known points')
+    plt.plot(x_interp, y_interp, label='Interpolation')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Hermite Interpolation')
+    plt.legend()
+    plt.show()
+
+#-------------------------------------------------------------------------
+
 # Función para llamar al método de Jacobi cuando se hace clic en el botón
 def llamar_jacobi():
     jacobi([[2, 1], [3, 4]], [1, -1], [0, 0], 3)
@@ -92,6 +134,9 @@ titulo = tk.Label (root,text="¿QUE PROGRAMA DESEAS EJECUTAR?")
 titulo.pack(pady=10)
 
 #VAMOS A CREAR LOS BOTONES PARA LOS METODOS DE JACOBI,EULER,SIMPSON COMPUESTA, INTERPOLACION DE HERMITE
+boton_hermite_interpolation = tk.Button(root, text="Interpolación de Hermite", command=llamar_hermite_interpolation)
+boton_hermite_interpolation.pack(pady=5)
+
 boton_jacobi = tk.Button(root,text="RESOLVER CON JACOBI", command=llamar_jacobi)
 boton_jacobi.pack(pady=5)
 
