@@ -15,7 +15,7 @@ def jacobi (A,b, vectorSolucion,iteracciones):
   while iteraccion < iteracciones:
     for i in range (len(A)):
       x = b[i]
-      for j in range (len(A):
+      for j in range (len(A)):
         if i ! = j:
           x-=A[i][j]* vectorSolucion[j]
           x/= A[i][i]
