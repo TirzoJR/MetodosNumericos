@@ -146,7 +146,7 @@ boton_euler.pack(pady=5)
 boton_simpson_compuesta = tk.Button(root,text="RESOLVER CON JACOBI", command=llamar_simpson_compuesta)
 boton_simpson_compuesta.pack(pady=5)
 
-"EJECUTAR EL BUCLE DE CADA UNO DE LOS EVENTOS
+#EJECUTAR EL BUCLE DE CADA UNO DE LOS EVENTOS
 root.mainloop()
 
 
