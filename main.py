@@ -210,7 +210,7 @@ titulo = tk.Label (root,text="¿QUE PROGRAMA DESEAS EJECUTAR?")
 titulo.pack(pady=10)
 
 #VAMOS A CREAR LOS BOTONES PARA LOS METODOS DE JACOBI,EULER,SIMPSON COMPUESTA, INTERPOLACION DE HERMITE
-boton_hermite_interpolation = tk.Button(root, text="Interpolación de Hermite", command=llamar_hermite_interpolation)
+boton_hermite_interpolation = tk.Button(root, text="Interpolación de Hermite", main)
 boton_hermite_interpolation.pack(pady=5)
 
 boton_jacobi = tk.Button(root,text="RESOLVER CON JACOBI", command=llamar_jacobi)
