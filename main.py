@@ -26,7 +26,7 @@ def hermite_interpolation(x, y, y_prime, x_interp):
             term += f[0, j] * prod
         y_interp[i] = term
     
-    return y_interp
+     return y_interp
 
 #-------------------------------------------------------------------------
 
