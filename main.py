@@ -47,7 +47,7 @@ def jacobi (A,b, vectorSolucion,iteracciones):
           iteraccion += 1
           for p in range (len(vectorAux)):
             vectorSolucion[p]= vectorAux[p]
-   print('X da etapa: ', iteraccion, ' Aproximacion: ', vectorSolucion)
+    print('X da etapa: ', iteraccion, ' Aproximacion: ', vectorSolucion)
 
 #-------------------------------------------------------------------------
 
