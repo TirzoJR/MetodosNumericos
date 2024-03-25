@@ -1,33 +1,109 @@
 import tkinter as tk
 import numpy as np
+import sympy as sympy
+import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 #-------------------------------------------------------------------------
-def hermite_interpolation(x, y, y_prime, x_interp):
-    n = len(x)
-    m = 2 * n
-    
-    # Initialize arrays for divided differences
-    f = np.zeros((m, m))
-    f[:, 0] = np.concatenate((x, x))
-    f[:, 1] = np.concatenate((y, y))
-    
-    # Compute divided differences
-    for j in range(2, m):
-        for i in range(m - j):
-            f[i, j] = (f[i + 1, j - 1] - f[i, j - 1]) / (f[i + j, 0] - f[i, 0])
-    
-    # Interpolation
-    y_interp = np.zeros_like(x_interp)
-    for i, x_i in enumerate(x_interp):
-        prod = 1
-        term = f[0, 1]
-        for j in range(2, m):
-            prod *= (x_i - f[j - 2, 0])
-            term += f[0, j] * prod
-        y_interp[i] = term
-    
-        return y_interp
+#Metodo de Hermite
 
+def clear_screen():
+    import os
+    if os.name == 'posi x ':
+        _ = os.system('clear')
+    else:
+        _ = os.system ('cls')
+
+def calcular_polinomio_interpolador_hermite(z,fz,difs):
+    polinomio = ""
+    n = len(z)
+    for k in range (n):
+        if k==0:
+            polinomio += str(round(fz[k],6))
+        else:
+            polinomio += " + "
+            for i in range(k):
+                polinomio += f"(x - {round(z[i],6})*"
+            polinomio += f"({round(difs[k-1][0],6)})"
+    return polinomio
+def simplificar_polinomio(polinomio):
+    x = sympy.symbols('x')
+    polinomio_simplificado = sympy.symplify(polinomio):
+    polinomio_simplificado_rounded = polinomio_simplificado.evalf(n=6)
+
+return polinomio_simplificado_rounded
+
+def main ():
+    n= int (input("ingresa  la cantidad de datos :"))
+    x=[]
+    fx=[]
+    dfx=[]
+    
+    for i in range (n):
+        x.append(float(input(f"Ingresa el valor de x{i}:")))
+        fx.append(float(input(f"Ingresa el valor de f(x{i}):")))
+        dfx.append(float(input(f"Ingrese el valor de f'(x{i}): ")))
+    z=[]
+    fz=[]
+    dfz=[]
+    
+    for i in range (n):
+        z.append(x[i])
+        z.append(x[i])
+        fz.append(fx[i])
+        fz.append(fx[i])
+        dfz.append(dfx[i])
+        dfz.append(dfx[i])
+  dif =[]
+  m=2*n
+  difs =[]
+    for i in range(m-1):
+        dif = []
+        difs.append(dif)
+    for i in range(m-1):
+        for j in range(m-1-i):
+            if i == 0:
+                if fz[j+1]-fz[j] == 0:
+                    difs[i].append(dfz[j])
+                else:
+                    difs[i].append((fz[j+1]-fz[j])/(z[j+1]-z[j]))
+            else:
+                difs[i].append((difs[i-1][j+1]-difs[i-1][j])/(z[j+i+1]-z[j]))
+    max_legth = max (len(z),len(fz))
+    for i in range(m - 1):
+        difs[i].extend(["-"] * (max_length - len(difs[i])))
+
+    # Crear la tabla con valores redondeados a 6 decimales
+    header = ["z", "fz"]
+    for i in range(m - 1):
+        header.append(f"dif{i+1}")
+
+    table = [header]
+    for row in zip(z, fz, *difs):
+        rounded_row = [round(cell, 6) if isinstance(cell, float) else cell for cell in row]
+        table.append(rounded_row)
+
+    # Imprimir la tabla con columnas alineadas
+    column_lengths = [max(len(str(cell)) for cell in column) for column in zip(*table)]
+    for row in table:
+        formatted_row = [str(cell).ljust(column_length) for cell, column_length in zip(row, column_lengths)]
+        print("  ".join(formatted_row))
+
+    # Obtener el polinomio interpolador de Hermite
+    polinomio = calcular_polinomio_interpolador_hermite(z, fz, difs)
+
+    # Imprimir el polinomio interpolador
+    print("Polinomio interpolador de Hermite:")
+    print(polinomio)
+
+    # Simplificar el polinomio interpolador
+    polinomio_simplificado = simplificar_polinomio(polinomio)
+    print("Polinomio interpolador de Hermite (simplificado a mínima expresión con 6 decimales):")
+    print(polinomio_simplificado)
+
+   
+            
+    
+    
 #-------------------------------------------------------------------------
 
 
